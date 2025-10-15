@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="right">
 بِسْــــــــــــــمِ اللَّهِ الرَّحْمَنِ الرَّحِيم 
 </p>
@@ -46,3 +47,7 @@ Saya menerima dengan baik kontribusi kamu untuk project starter ini.
 
 ## Support Me
 Dukung aku [https://saweria.co/afrizalmy](https://saweria.co/afrizalmy)
+=======
+# trial-web-laravel
+percantik login register dan keamanan login
+>>>>>>> b728efd69071e519d168a7942df2a4b0dd44b02a

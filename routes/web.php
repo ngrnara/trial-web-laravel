@@ -4,6 +4,7 @@ use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,14 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});
+
+
 
 Auth::routes();
 
@@ -40,4 +49,19 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::match(['get','post'],'{id}/ubah', 'ubahAkun')->name('edit');
             Route::delete('{id}/hapus', 'hapusAkun')->name('delete');
         });
+
+        // 2. Tambahan route resource untuk Pegawai
+        Route::controller(PegawaiController::class)
+    ->prefix('pegawai')
+    ->as('pegawai.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');                  // List pegawai
+        Route::get('tambah', 'create')->name('create');           // Form tambah pegawai
+        Route::post('tambah', 'store')->name('store');            // Simpan data baru
+        Route::get('{pegawai}/ubah', 'edit')->name('edit');       // Form edit
+        Route::put('{pegawai}/ubah', 'update')->name('update');   // Update data
+        Route::delete('{pegawai}/hapus', 'destroy')->name('delete'); // Hapus data
+        Route::get('{pegawai}', 'show')->name('show');            // Detail pegawai (opsional)
+    });
+
 });

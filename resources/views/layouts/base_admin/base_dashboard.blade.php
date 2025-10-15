@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    @stack('css')
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('judul') | Laravel 9 - AdminLTE 3</title>
@@ -42,5 +43,6 @@
         {{-- <script src="../../dist/js/demo.js"></script> --}}
 
         @yield('script_footer')
+        @stack('js')
     </body>
 </html>

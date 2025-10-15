@@ -45,8 +45,6 @@ Laravel Admin Starter project dengan AdminLTE v3.
 Silahkan ke halaman issue berikan untuk penjelasan lebih lanjutnya.
 Saya menerima dengan baik kontribusi kamu untuk project starter ini.
 
-## Support Me
-Dukung aku [https://saweria.co/afrizalmy](https://saweria.co/afrizalmy)
 =======
 # trial-web-laravel
 percantik login register dan keamanan login

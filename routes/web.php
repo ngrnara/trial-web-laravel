@@ -63,5 +63,5 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
         Route::delete('{pegawai}/hapus', 'destroy')->name('delete'); // Hapus data
         Route::get('{pegawai}', 'show')->name('show');            // Detail pegawai (opsional)
     });
-
+    
 });

@@ -68,14 +68,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Kita akan pakai cipher (algoritma) yang sama dengan Laravel
+        $cipher = 'AES-256-CBC';
+        
+        // 1. Ambil APP_KEY dari .env dan decode
+        // (substr dipakai untuk menghapus prefix "base64:")
+        $key = base64_decode(substr(config('app.key'), 7));
+
+        // 2. Tentukan IV (Initialization Vector) yang STATIS (TETAP)
+        // Ini harus 16 byte (16 karakter) untuk AES-256-CBC
+        $iv = '1234567890123456';
+
         // 1. Ambil password asli (ini adalah 'pwd')
     $passwordAsli = $data['password'];
 
     // 2. Buat 'salt_value' (nilai salt, berbeda tiap user)
     $salt = Str::random(16); 
 
+    // Kita ganti Crypt::encryptString() dengan openssl_encrypt() manual
+    $encryptedRaw = openssl_encrypt($passwordAsli, $cipher, $key, 0, $iv);
     // 3. Buat 'pwd_enkrip' (nilai pwd yang dienkrip)
-    $passwordEnkripsi = Crypt::encryptString($passwordAsli);
+    $passwordEnkripsi = base64_encode($encryptedRaw);
 
     // 4. Buat 'hash_value' (hasil hashing dari password)
     //    Kita anggap ini 'hash_dari_enkripsi' sesuai tabelmu
